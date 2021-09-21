@@ -24,7 +24,7 @@ dem Ecosystem-File von PM2 (https://pm2.io/docs/runtime/best-practices/environme
     "USER": "demo",
     "PASS": "demo",
 
-**Funktionisweise**
+**Funktionsweise**
 
 Der Dienst fragt Camunda nach External Tasks und gleicht diese mit dem Topic ab. 
 Befinden sich offene Task für das Topic in der Pipeline, werden diese abgerufen.  
