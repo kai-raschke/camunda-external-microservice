@@ -1,0 +1,23 @@
+{
+  "name": "org.prodig.external.microapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kai Raschke",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^16.9.4"
+  },
+  "dependencies": {
+    "@types/request": "^2.48.7",
+    "@types/winston": "^2.4.4",
+    "camunda-external-task-client-js": "^2.1.0",
+    "postman-request": "^2.88.1-postman.30",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.5"
+  }
+}
