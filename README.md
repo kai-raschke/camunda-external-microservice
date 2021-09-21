@@ -40,3 +40,7 @@ diese Aufgabe über das Modul delegiert (PDF creator HTTP API).
 **Sample**
 
 Beispiel BPMN mit dem Aufruf des "just-complete"-Microservice.
+
+**License**
+
+MIT License @ 2021
