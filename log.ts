@@ -6,26 +6,29 @@ export let log;
 
 export function creatLogger() {
     let logPath = path.join(__dirname, 'logs');
+    let transports = [];
 
-    var transport = new (winston.transports.DailyRotateFile)({
-        filename: 'application-%DATE%.log',
-        dirname: logPath,
-        datePattern: 'YYYY-MM-DD-HH',
-        zippedArchive: true,
-        maxSize: '15m',
-        maxFiles: '7d'
-    });
+    if (process.env.FILE_LOG !== 'false') {
+        const transport = new (winston.transports.DailyRotateFile)({
+            filename: 'application-%DATE%.log',
+            dirname: logPath,
+            datePattern: 'YYYY-MM-DD-HH',
+            zippedArchive: true,
+            maxSize: '15m',
+            maxFiles: '7d'
+        });
 
-    // transport.on('rotate', function(oldFilename, newFilename) {
+        // transport.on('rotate', function(oldFilename, newFilename) {
         // do something fun
-    // });
+        // });
+
+        transports.push(transport);
+    }
 
     var winstonLogger = winston.createLogger({
         level: 'info',
         format: winston.format.json(),
-        transports: [
-            transport
-        ]
+        transports
     });
 
     if (process.env.NODE_ENV !== 'production') {

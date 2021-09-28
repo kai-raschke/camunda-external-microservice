@@ -15,6 +15,7 @@
       "WORKER_ID": "default-worker",
       "USER": "demo",
       "PASS": "demo",
+      "FILE_LOG": false,
 
       "otherProcVars": "https://kaju.it"
     }
