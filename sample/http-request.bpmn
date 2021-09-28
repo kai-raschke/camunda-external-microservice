@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_11kgckv" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.7.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.14.0">
+  <bpmn:process id="Process_14y85p0" name="Sample HTTP" isExecutable="true" camunda:versionTag="001">
+    <bpmn:startEvent id="StartEvent_1" camunda:initiator="creator">
+      <bpmn:outgoing>Flow_01wsccd</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_01wsccd" sourceRef="StartEvent_1" targetRef="Activity_1xyi6uu" />
+    <bpmn:endEvent id="Event_19p76wi">
+      <bpmn:incoming>Flow_1fq8iyx</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_16boobo" sourceRef="Activity_1xyi6uu" targetRef="Activity_0xjufxz" />
+    <bpmn:serviceTask id="Activity_1xyi6uu" name="Query http API" camunda:type="external" camunda:topic="dev.external.microapi">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="micro-api-module">test.http-request</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_01wsccd</bpmn:incoming>
+      <bpmn:outgoing>Flow_16boobo</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1fq8iyx" sourceRef="Activity_0xjufxz" targetRef="Event_19p76wi" />
+    <bpmn:userTask id="Activity_0xjufxz" name="Show title" camunda:assignee="${creator}">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="title" label="Title" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_16boobo</bpmn:incoming>
+      <bpmn:outgoing>Flow_1fq8iyx</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_14y85p0">
+      <bpmndi:BPMNEdge id="Flow_16boobo_di" bpmnElement="Flow_16boobo">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="450" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01wsccd_di" bpmnElement="Flow_01wsccd">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fq8iyx_di" bpmnElement="Flow_1fq8iyx">
+        <di:waypoint x="550" y="117" />
+        <di:waypoint x="632" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ncbsnh_di" bpmnElement="Activity_1xyi6uu">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_19p76wi_di" bpmnElement="Event_19p76wi">
+        <dc:Bounds x="632" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ue50qe_di" bpmnElement="Activity_0xjufxz">
+        <dc:Bounds x="450" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
