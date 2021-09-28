@@ -11,7 +11,7 @@ function main () {
     const extClient = new ExternalTaskClient();
     const instance = extClient.init().getInstance();
 
-    const topic = process.env.topic;
+    const topic = process.env.TOPIC;
 
     if (topic) {
         instance.subscribe(topic, taskSubscription);

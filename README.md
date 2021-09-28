@@ -19,7 +19,7 @@ of PM2.
 | Variable | Type | Optional | Default | Values | Description |
 |---|---|---|---|---|---|
 | NODE_ENV | String |  | -  | development; staging; production  | node environment
-|  topic |  String |   | -  |   | external service task topic |
+|  TOPIC |  String |   | -  |   | external service task topic |
 | ASYNC_RESPONSE_TIMEOUT |  Number | X  | -  |   | [External Task Client Docs](https://github.com/camunda/camunda-external-task-client-js/blob/master/docs/Client.md#new-clientoptions)
 | MAX_TASK |  Number | X  | 10  |   | [External Task Client Docs](https://github.com/camunda/camunda-external-task-client-js/blob/master/docs/Client.md#new-clientoptions)
 | INTERVAL |  Number | X  | 300  |   | [External Task Client Docs](https://github.com/camunda/camunda-external-task-client-js/blob/master/docs/Client.md#new-clientoptions)
