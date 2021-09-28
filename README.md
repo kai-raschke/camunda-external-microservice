@@ -1,42 +1,70 @@
 # camunda-external-microservice
-Uses external task client to redirect variable microservices
+Uses external task client to redirect variable microservices to modules
 
-### microApi
+## microApi
 
-Fungiert als Schnittstelle zwischen Camunda und weiteren Microservices und führt einfache Tasks aus.
-Umgesetzt mithilfe des External Task Client von Camunda (https://github.com/camunda/camunda-external-task-client-js).
+Acts as an interface between Camunda and other microservices and executes simple tasks.
+Implemented using the External Task Client from Camunda (https://github.com/camunda/camunda-external-task-client-js).
 
+### Configuration
 
-**Konfiguration**
+Default method for setting configurations options is the .env file.
 
-Die Konfiguration kann in einer app.json hinterlegt werden. Das Format entspricht 
-dem Ecosystem-File von PM2 (https://pm2.io/docs/runtime/best-practices/environment-variables/).
+If you are using PM2 as process manager, you can use their ecosystem json file declaration (sample
+in app.json.sample). In case of PM2 delete the .env file, because it will overwrite the variables
+of PM2.
 
-    "NODE_ENV": "development",
-    "topic": "dev.external.microapi",
-    "ASYNC_RESPONSE_TIMEOUT": 10000,
-    "MAX_TASK": 5,
-    "INTERVAL": 2000,
-    "AUTO_POLL": "false",
-    "LOCK_DURATION": 10000,
-    "BASE_URL": "http://localhost:8080/engine-rest",
-    "WORKER_ID": "default-worker",
-    "USER": "demo",
-    "PASS": "demo",
+### Option
 
-**Funktionisweise**
+| Variable | Type | Optional | Default | Values | Description |
+|---|---|---|---|---|---|
+| NODE_ENV | String |  | -  | development; staging; production  | node environment
+|  topic |  String |   | -  |   | external service task topic |
+| ASYNC_RESPONSE_TIMEOUT |  Number | X  | -  |   | [External Task Client Docs](https://github.com/camunda/camunda-external-task-client-js/blob/master/docs/Client.md#new-clientoptions)
+| MAX_TASK |  Number | X  | 10  |   | [External Task Client Docs](https://github.com/camunda/camunda-external-task-client-js/blob/master/docs/Client.md#new-clientoptions)
+| INTERVAL |  Number | X  | 300  |   | [External Task Client Docs](https://github.com/camunda/camunda-external-task-client-js/blob/master/docs/Client.md#new-clientoptions)
+| AUTO_POLL |  Boolean | X  | false  |   | [External Task Client Docs](https://github.com/camunda/camunda-external-task-client-js/blob/master/docs/Client.md#new-clientoptions)
+| LOCK_DURATION |  Number | X  | 50000  |   | [External Task Client Docs](https://github.com/camunda/camunda-external-task-client-js/blob/master/docs/Client.md#new-clientoptions)
+| BASE_URL |  String | X  | http://localhost:8080/engine-rest  |   | [External Task Client Docs](https://github.com/camunda/camunda-external-task-client-js/blob/master/docs/Client.md#new-clientoptions)
+| WORKER_ID |  String | X  | default-worker  |   | [External Task Client Docs](https://github.com/camunda/camunda-external-task-client-js/blob/master/docs/Client.md#new-clientoptions)
+| AUTH |  Boolean | X  | false  |   | Use basic auth for REST
+| USER |  String | X  | -  |   | Basic auth user
+| PASS |  String | X  | -  |   | Basic auth password
 
-Der Dienst fragt Camunda nach External Tasks und gleicht diese mit dem Topic ab. 
-Befinden sich offene Task für das Topic in der Pipeline, werden diese abgerufen.  
-Im BPMN wird über Input-Variablen der auszuführende Task und ggf. noch Variablen 
-mitgegeben (nicht notwendigerweise, da alle Variablen bei Bedarf zur Verfügung stehen).  
+### How it works
 
-Alle Funktionen sind als Module im Ordner "modules" hinterlegt.
+Place a service task in your BPMN and configure it to use the external microservice (see the sample BPMN).
 
-Falls aufwendigere Prozesse ausgeführt werden sollen (z. B. PDF erstellen), wird 
-diese Aufgabe über das Modul delegiert (PDF creator HTTP API).
+This service will grab the task and execute the specified module.
 
+You can set more input variables in the service task to use them directly in the module. Modules
+then take care of some service (e.g. Query another API, build a PDF, download stuff etc.).
 
-**Sample**
+### Sample
 
-Beispiel BPMN mit dem Aufruf des "just-complete"-Microservice.
+Sample folder holds a BPMN using the "just-complete"-Microservice.
+It just completes the service successfully.
+
+### LICENCE
+
+MIT License
+
+Copyright (c), 2021, Kai Raschke
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
