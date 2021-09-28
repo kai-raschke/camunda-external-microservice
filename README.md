@@ -50,7 +50,10 @@ The http-request calls a mock server for some JSON and sets a process variable.
 
 ### Concept
 
-Bernd Rücker talks about this kind of concept and if it's a good or bad practice.
+The concept differs in the way the Camunda external task client works by using
+the variable module name instead of using a variable topic name.
+
+Bernd Rücker talks about this kind of concept and wether it's a good or bad practice.
 
 A discussion about it can be found in the Camunda forum:  
 https://forum.camunda.org/t/microservices-external-tasks-not-the-best-practice/15387
