@@ -1,5 +1,3 @@
-import * as path from "path";
-
 import { Client, BasicAuthInterceptor } from "camunda-external-task-client-js";
 import { util } from "camunda-external-task-client-js/lib/__internal/utils";
 import { log as log } from './log';
@@ -13,15 +11,7 @@ export class ExternalTaskClient {
         if (options) {
             env = options
         }
-        // Otherwise check if initialized by PM2 or not (NODE_ENV not supplied means no PM2)
-        else if (!process.env.NODE_ENV) {
-            try {
-                let appJson = require(path.resolve(__dirname) + path.sep + 'app.json'); //Module within node_modules/org.prodig.external.extras
-                env = appJson.apps[0].env;
-            } catch(ex){ console.log(ex); }
-        }
 
-        // If started by PM2 all env vars are available, otherwise merge them
         process.env = Object.assign(process.env, env);
     }
 

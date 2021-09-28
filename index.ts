@@ -1,3 +1,6 @@
+// Import .env file if available
+require('dotenv').config();
+
 import { ExternalTaskClient } from "./client";
 import { log, creatLogger } from './log';
 
