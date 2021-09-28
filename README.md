@@ -49,7 +49,7 @@ It just completes the service successfully.
 
 MIT License
 
-Copyright (c), 2021, Kai Raschke
+Copyright (c), 2021, 2021 KAJU.IT UG (haftungsbeschränkt)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
