@@ -41,10 +41,19 @@ the module (without extension).
 You can set more input variables in the service task to use them directly in the module. Modules
 then take care of some service (e.g. Query another API, build a PDF, download stuff etc.).
 
-### Sample
+### Example
 
 Sample folder holds a BPMN using the "just-complete"-Microservice.
 It just completes the service successfully.
+
+The http-request calls a mock server for some JSON and sets a process variable.
+
+### Concept
+
+Bernd Rücker talks about this kind of concept and if it's a good or bad practice.
+
+A discussion about it can be found in the Camunda forum:  
+https://forum.camunda.org/t/microservices-external-tasks-not-the-best-practice/15387
 
 ### LICENCE
 
