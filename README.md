@@ -23,7 +23,6 @@ of PM2.
 | ASYNC_RESPONSE_TIMEOUT |  Number | X  | -  |   | [External Task Client Docs](https://github.com/camunda/camunda-external-task-client-js/blob/master/docs/Client.md#new-clientoptions)
 | MAX_TASK |  Number | X  | 10  |   | [External Task Client Docs](https://github.com/camunda/camunda-external-task-client-js/blob/master/docs/Client.md#new-clientoptions)
 | INTERVAL |  Number | X  | 300  |   | [External Task Client Docs](https://github.com/camunda/camunda-external-task-client-js/blob/master/docs/Client.md#new-clientoptions)
-| AUTO_POLL |  Boolean | X  | false  |   | [External Task Client Docs](https://github.com/camunda/camunda-external-task-client-js/blob/master/docs/Client.md#new-clientoptions)
 | LOCK_DURATION |  Number | X  | 50000  |   | [External Task Client Docs](https://github.com/camunda/camunda-external-task-client-js/blob/master/docs/Client.md#new-clientoptions)
 | BASE_URL |  String | X  | http://localhost:8080/engine-rest  |   | [External Task Client Docs](https://github.com/camunda/camunda-external-task-client-js/blob/master/docs/Client.md#new-clientoptions)
 | WORKER_ID |  String | X  | default-worker  |   | [External Task Client Docs](https://github.com/camunda/camunda-external-task-client-js/blob/master/docs/Client.md#new-clientoptions)
