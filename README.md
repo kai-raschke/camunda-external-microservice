@@ -34,7 +34,9 @@ of PM2.
 
 Place a service task in your BPMN and configure it to use the external microservice (see the sample BPMN).
 
-This service will grab the task and execute the specified module.
+This service will grab the task and execute the specified module.  
+The module is specified as input parameter named "micro-api-module" and as value the filename of the
+the module (without extension).
 
 You can set more input variables in the service task to use them directly in the module. Modules
 then take care of some service (e.g. Query another API, build a PDF, download stuff etc.).
@@ -48,7 +50,7 @@ It just completes the service successfully.
 
 MIT License
 
-Copyright (c), 2021, 2021 KAJU.IT UG (haftungsbeschränkt)
+Copyright (c), 2021, KAJU.IT UG (haftungsbeschränkt)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
